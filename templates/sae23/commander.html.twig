@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Sae23Controller!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Commander</h1>
+
+    <h5>Prix total : {{prixtotal}}€</h5>
+
+    <form action="/sae23/achat" method="post">
+    	<input type="hidden" name="prix" value="{{prixtotal}}" >
+    	<input type="hidden" name="articleid" value="{{articleid}}" >
+    	<input type="hidden" name="garantie" value="{{garantie}}" >
+    	<input type="hidden" name="cadeau" value="{{cadeau}}" >
+    	<input type="hidden" name="envoierapide" value="{{envoierapide}}" >
+    	<div class="form-group">
+  			<label class="col-form-label mt-4" for="noml">Nom : </label>
+  			<input type="text" class="form-control"  name="nom" id="nom">
+		</div>
+		<div class="form-group">
+  			<label class="col-form-label mt-4" for="tell">Telephone : </label>
+  			<input type="text" class="form-control"  name="tel" id="tel">
+		</div>
+		<div class="form-group">
+  			<label class="col-form-label mt-4" for="paysl">Pays: </label>
+  			<input type="text" class="form-control"  name="pays" id="pays">
+		</div>
+		<div class="form-group">
+  			<label class="col-form-label mt-4" for="villel">Ville : </label>
+  			<input type="text" class="form-control"  name="ville" id="ville">
+		</div>
+		<div class="form-group">
+  			<label class="col-form-label mt-4" for="adressel">Adresse : </label>
+  			<input type="text" class="form-control"  name="adresse" id="adresse">
+		</div>
+		<div class="form-group">
+  			<label class="col-form-label mt-4" for="codepostall">Code Postal : </label>
+  			<input type="text" class="form-control"  name="codepostal" id="codepostal">
+		</div>
+		<button type="submit" class="btn btn-primary">Commander</button>
+    </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Sae23Controller!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <center>
+
+    <br><button type="button"  onclick="window.location.href='/sae23/pageadmin';" class="btn btn-primary">Page Admin</button>
+
+    <h1>Les commandes</h1>
+
+    <form action="/sae23/envoiecommande" method="post">
+
+    <button type="submit" class="btn btn-success">Envoyé</button>
+
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Choix</th>
+      <th scope="col">Numero Article</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Telephone</th>
+      <th scope="col">Pays</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Code Postal</th>
+      <th scope="col">Garantie</th>
+      <th scope="col">Cadeau</th>
+      <th scope="col">Envoie Rapide</th>
+      <th scope="col">Envoyé</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for arrayy in array %}
+    <tr class="table-primary">
+      {% if arrayy['envoie'] == 0 %}
+      <td><input class="form-check-input" type="checkbox" value="{{arrayy['id']}}" name="commandecheck" id="commandecheck"></td>
+      {% else %}
+      <td><input class="form-check-input" type="checkbox" value="{{arrayy['id']}}" name="commandecheck" id="commandecheck" checked="" disabled=""></td>
+      {% endif %}
+      <td>{{arrayy['article_id']}}</td>
+      <td>{{arrayy['prix']}}€</td>
+      <td>{{arrayy['nom']}}</td>
+      <td>{{arrayy['telephone']}}</td>
+      <td>{{arrayy['pays']}}</td>
+      <td>{{arrayy['ville']}}</td>
+      <td>{{arrayy['adresse']}}</td>
+      <td>{{arrayy['codepostal']}}</td>
+      <td>{{arrayy['garantie']}}</td>
+      <td>{{arrayy['cadeau']}}</td>
+      <td>{{arrayy['envoierapide']}}</td>
+      <td>{{arrayy['envoie']}}</td>
+    {% endfor %}
+  </tbody>
+</table>
+
+</form>
+</center>
+{% endblock %}

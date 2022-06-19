@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Sae23Controller!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Ajouter Prestation</h1>
+
+    <form action="/sae23/ajouttprestation" method="post">
+    <div class="form-group">
+  		<label class="col-form-label mt-4" for="inputnom">Nom : </label>
+  		<input type="text" class="form-control" name="nom" id="nom">
+	</div>
+    <div class="form-group">
+  		<label class="col-form-label mt-4" for="inputprix">Prix : </label>
+  		<input type="text" class="form-control" name="prix" id="prix">
+	</div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  	</form>
+
+</div>
+{% endblock %}
