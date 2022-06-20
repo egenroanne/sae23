@@ -21,7 +21,7 @@ class Sae23Controller extends AbstractController
     public function index(): Response
     {
 
-        $con = new PDO("mysql:host=localhost:3306;dbname=sae23", "roott", "roott");
+        $con = new PDO("mysql:host=conteneurrmariadb;dbname=sae23", "roott", "roott");
         $req = $con -> prepare("select id,nom,image,prix from articles");
         $req -> execute();
 
@@ -78,7 +78,7 @@ class Sae23Controller extends AbstractController
     {
 		$articleid = $request -> request -> get("articleid");
 
-        $con = new PDO("mysql:host=localhost:3306;dbname=sae23", "roott", "roott");
+        $con = new PDO("mysql:host=conteneurrmariadb;dbname=sae23", "roott", "roott");
         $req = $con -> prepare("select * from articles where id = ?");
         $req -> bindParam(1, $articleid);
         $req -> execute();
@@ -127,7 +127,7 @@ class Sae23Controller extends AbstractController
     public function gestionarticles(): Response
     {
 
-        $con = new PDO("mysql:host=localhost:3306;dbname=sae23", "roott", "roott");
+        $con = new PDO("mysql:host=conteneurrmariadb;dbname=sae23", "roott", "roott");
         $req = $con -> prepare("select id,nom,image,prix from articles");
         $req -> execute();
 
@@ -179,7 +179,7 @@ class Sae23Controller extends AbstractController
 
         $articleid = intval($request->request->get("articlecheck"));
 
-        $con = new PDO("mysql:host=localhost:3306;dbname=sae23", "roott", "roott");
+        $con = new PDO("mysql:host=conteneurrmariadb;dbname=sae23", "roott", "roott");
         $req = $con -> prepare("delete from articles where id = ?");
         $req -> bindParam(1, $articleid);
         $req -> execute();
@@ -196,7 +196,7 @@ class Sae23Controller extends AbstractController
     public function commandes(): Response
     {
 
-        $con = new PDO("mysql:host=localhost:3306;dbname=sae23", "roott", "roott");
+        $con = new PDO("mysql:host=conteneurrmariadb;dbname=sae23", "roott", "roott");
         $req = $con -> prepare("select * from commandes");
         $req -> execute();
 
@@ -219,7 +219,7 @@ class Sae23Controller extends AbstractController
         $commandeid = $request->request->get("commandecheck");
         $envoie = 1;
 
-        $con = new PDO("mysql:host=localhost:3306;dbname=sae23", "roott", "roott");
+        $con = new PDO("mysql:host=conteneurrmariadb;dbname=sae23", "roott", "roott");
         $req = $con -> prepare("update commandes set envoie = ? where id = ?");
         $req -> bindParam(1, $envoie);
         $req -> bindParam(2, $commandeid);
@@ -235,7 +235,7 @@ class Sae23Controller extends AbstractController
     public function prestations(): Response
     {
 
-        $con = new PDO("mysql:host=localhost:3306;dbname=sae23", "roott", "roott");
+        $con = new PDO("mysql:host=conteneurrmariadb;dbname=sae23", "roott", "roott");
         $req = $con -> prepare("select * from prestations");
         $req -> execute();
 
@@ -275,7 +275,7 @@ class Sae23Controller extends AbstractController
         //$nom = str_replace('"', '', $nom);
         //$nom = "'" . $nom . "'";
 
-        $con = new PDO("mysql:host=localhost:3306;dbname=sae23", "roott", "roott");
+        $con = new PDO("mysql:host=conteneurrmariadb;dbname=sae23", "roott", "roott");
         $req = $con -> prepare("alter table commandes add ? boolean not null default false;");
         $req -> bindParam(1, $nom);
         $req -> execute();
