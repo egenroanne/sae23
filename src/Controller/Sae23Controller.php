@@ -158,11 +158,13 @@ class Sae23Controller extends AbstractController
         $image = $request->files->get("image");
         $prix = $request->request->get("prixx");
         $destination = $this->getParameter("kernel.project_dir")."/public";
-        $image -> move($destination);
+	$nomfichier = uniqid()."-".$image->getClientOriginalName();
+
+        $image -> move($destination,$nomfichier);
 
         $articles = new articles();
         $articles -> setNom($nom);
-        $articles -> setImage($image->getFileNAme());
+        $articles -> setImage($nomfichier);
         $articles -> setPrix(intval($prix));
         $entityManager -> persist($articles);
         $entityManager -> flush();
